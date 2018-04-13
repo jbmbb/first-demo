@@ -21,6 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.firstdemo.domain.User;
 import com.example.firstdemo.repository.UserRepository;
 
+/**
+ * swagger api
+ * @author xxlai
+ *
+ */
 @Api(value="用户模块")
 @RestController
 @RequestMapping("/user")
