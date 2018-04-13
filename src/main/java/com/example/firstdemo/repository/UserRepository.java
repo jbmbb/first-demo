@@ -1,5 +1,7 @@
 package com.example.firstdemo.repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -62,8 +64,13 @@ public class UserRepository {
 	 * 查询所有用户
 	 * @return
 	 */
-	public ConcurrentMap<Integer, User> queryAllUsers(){
-		return userMap;
+	public List<User> queryAllUsers(){
+		List<User> userList = new ArrayList<User>();
+		Set<Entry<Integer, User>> users = userMap.entrySet();
+		for (Entry<Integer, User> entry : users) {
+			userList.add(entry.getValue());
+		}
+		return userList;
 	}
 	
 	/**
