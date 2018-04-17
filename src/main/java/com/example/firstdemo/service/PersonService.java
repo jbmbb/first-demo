@@ -1,10 +1,12 @@
 package com.example.firstdemo.service;
 
+import java.util.List;
+
 import com.example.firstdemo.domain.Person;
 
 public interface PersonService {
 	
-	Person findByName(String name);
+	List<Person> findByName(String name);
 	
 	Person findByNameAndAge(String name,int age);
 	

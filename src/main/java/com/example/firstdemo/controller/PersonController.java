@@ -1,5 +1,7 @@
 package com.example.firstdemo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,13 +18,13 @@ public class PersonController {
 	private PersonService personService;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public Person index(){
+	public List<Person> index(){
 		Person person = new Person();
 		person.setName("xxlai");
 		person.setAge(18);
 		personService.save(person);
 		
-		Person temp = personService.findByName("xxlai");
-		return temp;
+		List<Person> persons = personService.findByName("xxlai");
+		return persons;
 	}
 }

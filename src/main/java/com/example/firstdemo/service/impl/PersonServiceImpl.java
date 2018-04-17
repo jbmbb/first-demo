@@ -1,5 +1,7 @@
 package com.example.firstdemo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class PersonServiceImpl implements PersonService {
 	private PersonRepository personRepository;
 
 	@Override
-	public Person findByName(String name) {
+	public List<Person> findByName(String name) {
 		return personRepository.findByName(name);
 	}
 
