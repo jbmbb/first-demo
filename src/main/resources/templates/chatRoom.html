@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>聊天室</title>
+<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+	<h1>聊天室</h1>
+	<textarea id="chat_content" readonly="readonly" rows="9" cols="100"></textarea>
+	<br/>
+	
+	用户：<input type="text" id="user_name" value="" name="userName"/>
+	<button id="btn_join">加入聊天室</button>
+	<button id="btn_exit">退出聊天室</button>
+	<br/>
+	
+	消息：<input type="text" id="send_text" value="" name="sendText" />
+	<button id="btn_send">发送</button>
+</body>
+<script type="text/javascript">
+	$(function(){
+		var prefixUrl="ws://127.0.0.1:8081/ws/chatRoom/";
+		var ws;//websocket连接对象
+		
+		if(!('WebSocket' in window)){
+			alert("Not support websocket");
+		}
+		
+		$('#btn_join').click(function(){
+			var userName=$('#user_name').val();
+			
+			ws=new WebSocket(prefixUrl+userName);
+			
+			ws.onopen = function(event){
+				console.log("建立连接");
+			}
+			
+			ws.onmessage=function(event){
+				console.log("接受到内容："+event.data);
+				$("#chat_content").append(event.data+'\n');
+			}
+			
+			ws.onerror=function(event){
+				console.log("发生错误");
+			}
+			
+			ws.onclose = function(event){
+				console.log("关闭连接");
+			}
+		});
+		
+		function sendMessage(message){
+			ws.send(message);
+		}
+		
+		function closeWebSocket(){
+			ws.close();
+		}
+		
+		window.onbeforeunload = function(){
+			wx.close();
+		}
+		
+		$('#btn_send').click(function(){
+			closeWebSocket();
+		});
+	});
+</script>
+</html>
