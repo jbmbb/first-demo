@@ -1,0 +1,24 @@
+server:
+  port: 8081
+  
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot
+    username: xxlai
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+  thymeleaf:
+    enabled: true
+    cache: false
+    check-template-location: true
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html

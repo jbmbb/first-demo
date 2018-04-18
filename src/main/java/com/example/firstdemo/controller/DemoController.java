@@ -29,7 +29,7 @@ public class DemoController {
      */
     @ApiOperation(value = "获取单个用户", notes = "传入id获取单个用户")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String user(@ApiParam(value = "用户Id", required = true) @PathVariable Long id) {
+    public String getUser(@ApiParam(value = "用户Id", required = true) @PathVariable Long id) {
         return "user id :" + id;
     }
 

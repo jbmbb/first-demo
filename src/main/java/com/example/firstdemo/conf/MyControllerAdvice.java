@@ -61,7 +61,7 @@ public class MyControllerAdvice {
 	public Map myErrorHandler(MyException ex){
 		Map map = new HashMap();
 		map.put("code", 101);
-		map.put("msg", ex.getMsg());
+		map.put("msg", ex.getMessage());
 		return map;
 	}
 	

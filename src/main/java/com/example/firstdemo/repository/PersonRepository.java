@@ -15,4 +15,6 @@ public interface PersonRepository extends JpaRepository<Person, Long>{
 	
 	@Query("FROM Person p WHERE p.id =:id")
 	Person findPersonById(@Param("id") Long id);
+	
+	List<Person> findAll();
 }

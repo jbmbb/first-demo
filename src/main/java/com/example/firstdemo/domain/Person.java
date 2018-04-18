@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name="t_person")
@@ -17,6 +18,7 @@ public class Person {
 	private String name;
 	
 	@Column
+	@Min(value=18,message="未成年，禁止入内")
 	private int age;
 
 	/**
@@ -59,6 +61,14 @@ public class Person {
 	 */
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", name=" + name + ", age=" + age + "]";
 	}
 	
 }

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.firstdemo.conf.MyException;
+import com.example.firstdemo.constance.ExceptionEnum;
 
 /**
  * @RestControllerAdvice测试类
@@ -26,7 +27,7 @@ public class MyAdviceController {
 	
 	@RequestMapping("/exception")
 	public void getException(){
-		throw new MyException("102", "test myException");
+		throw new MyException(ExceptionEnum.SUCCESS);
 	}
 	
 	/*@RequestMapping("/home")
